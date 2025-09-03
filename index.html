@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jasim Ansari - Professional Portfolio</title>
+
+    <meta
+      name="description"
+      content="The professional portfolio of Jasim Ansari, an aspiring software developer specializing in creating engaging digital experiences."
+    />
+    <meta name="author" content="Jasim Ansari" />
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <meta
+      property="og:title"
+      content="Jasim Ansari - Software Developer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Explore my projects, skills, and journey as a passionate software developer."
+    />
+    <meta
+      property="og:image"
+      content="https://example.com/your-social-preview-image.jpg"
+    />
+    <meta property="og:url" content="https://your-portfolio-url.com" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button
+      id="darkModeToggle"
+      class="dark-mode-toggle"
+      aria-label="Toggle Dark Mode"
+    >
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <header class="header">
+      <div class="container">
+        <img src="img1.jpg" alt="Jasim Ansari" class="profile-photo" />
+        <h1 class="name">Jasim Ansari</h1>
+        <p class="tagline">
+          <span id="typing-text"></span><span class="cursor"></span>
+        </p>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#internship">Internship</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#social-media">Social Media</a></li>
+        <li><a href="#coding-platforms">Coding Platforms</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="about" class="section hidden">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            Hello! I'm Jasim, a passionate Web Developer who loves creating
+            engaging, user-friendly digital experiences. I have experience in
+            HTML, CSS, JavaScript, Java, and problem-solving, and I enjoy
+            bringing ideas to life through clean code and creative design. I
+            thrive on challenges and continuously look for opportunities to
+            learn, grow, and innovate through coding.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects" class="section hidden">
+        <div class="container">
+          <h2>My Projects</h2>
+          <div class="project-grid">
+            <div id="project-newsmania" class="project-card tilt-card">
+              <div class="project-content">
+                <h3 class="project-title">
+                  News Mania – Centralized News Platform with Real-Time Fake
+                  News Detection
+                </h3>
+                <p class="project-description">
+                  A team-based project that aggregates news from trusted sources
+                  and detects fake news instantly. Developed a centralized
+                  platform to fetch articles from The Hindu, Times of India, and
+                  other sources.
+                </p>
+                <div class="project-stack">
+                  <span>React.js</span> <span>Tailwind CSS</span>
+                  <span>Python</span> <span>Flask</span>
+                  <span>Machine Learning</span> <span>News API</span>
+                </div>
+              </div>
+            </div>
+            <div id="project-netflix" class="project-card tilt-card">
+              <div class="project-content">
+                <h3 class="project-title">
+                  Netflix Clone – React, HTML, CSS, JavaScript, API Integration
+                </h3>
+                <p class="project-description">
+                  Built a responsive Netflix-style web application using React
+                  for dynamic UI rendering. Integrated APIs to fetch and display
+                  movie/TV show data with search and category filtering.
+                </p>
+                <div class="project-stack">
+                  <span>React</span> <span>HTML</span> <span>CSS</span>
+                  <span>JavaScript</span> <span>API Integration</span>
+                  <span>Database</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="internship" class="section hidden">
+        <div class="container">
+          <h2>Internship</h2>
+          <h3>SalesQueen Software Solution [Frontend-Developer]</h3>
+          <ul>
+            <li>
+              Designed and maintained front-end components using React.js and
+              core web technologies for seamless user interaction.
+            </li>
+            <li>React.js, HTML, CSS, JavaScript, Git, and VS Code.</li>
+            <li>
+              Improved website responsiveness and reduced load time by 30% using
+              React.js optimization
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="resume" class="section hidden">
+        <div class="container">
+          <h2>Resume</h2>
+          <p>
+            Explore my skills, experience, and qualifications in detail. You can
+            view my resume in a new tab or download a PDF copy for your
+            convenience.
+          </p>
+          <div class="links">
+            <a href="Resume.pdf" target="_blank" class="btn">
+              <i class="fas fa-eye"></i> View in New Tab
+            </a>
+            <a href="Resume.pdf" download="Resume.pdf" class="btn">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="social-media" class="section hidden">
+        <div class="container">
+          <h2>Social Media</h2>
+          <div class="links">
+            <a
+              href="https://www.linkedin.com/in/jasim-ansari-5b8643267/"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my LinkedIn profile"
+              ><i class="fab fa-linkedin"></i> LinkedIn</a
+            >
+            <a
+              href="https://github.com/Jasim378"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my GitHub profile"
+              ><i class="fab fa-github"></i> GitHub</a
+            >
+            <a
+              href="https://x.com/Jasim_0007"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my X (formerly Twitter) profile"
+              ><i class="fab fa-twitter"></i> X</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="coding-platforms" class="section hidden">
+        <div class="container">
+          <h2>Coding Platforms</h2>
+          <div class="links">
+            <a
+              href="https://leetcode.com/u/Jasim-07/"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my LeetCode profile"
+              ><i class="fas fa-code"></i> LeetCode</a
+            >
+            <a
+              href="https://www.geeksforgeeks.org/user/jasimansartf4o/"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my GeeksforGeeks profile"
+              ><i class="fas fa-laptop-code"></i> GfG</a
+            >
+            <a
+              href="https://takeuforward.org/profile/jasim-07"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my TakeUForward profile"
+              ><i class="fas fa-terminal"></i> TUF</a
+            >
+            <a
+              href="https://www.hackerrank.com/profile/jasimansari_inf1"
+              target="_blank"
+              class="btn"
+              aria-label="Visit my HackerRank profile"
+              ><i class="fas fa-chart-line"></i> HackerRank</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="certificates" class="section hidden">
+        <div class="container">
+          <h2>Certificates</h2>
+          <div class="certificate-grid">
+            <div class="certificate-card tilt-card">
+              <img
+                src="image1.png"
+                alt="Certificate 1 Logo"
+                class="certificate-logo"
+              />
+              <h3>Web Development Basics</h3>
+              <p>
+                Issued by Example University. Covers HTML, CSS, and JavaScript
+                fundamentals.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1bIUk5Y2br5_rid-0047OIdzTYKrclS3J/view?usp=drive_link"
+                target="_blank"
+                class="btn"
+                >View Certificate</a
+              >
+            </div>
+            <div class="certificate-card tilt-card">
+              <img
+                src="image2.png"
+                alt="Certificate 2 Logo"
+                class="certificate-logo"
+              />
+              <h3>Java Programming</h3>
+              <p>
+                Issued by Code Academy. Advanced course on Java and
+                object-oriented programming.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1_C90titRSKUF6kxBmmi5EEStWveOC-Cs/view?usp=drive_link"
+                target="_blank"
+                class="btn"
+                >View Certificate</a
+              >
+            </div>
+            <div class="certificate-card tilt-card">
+              <img
+                src="image3.png"
+                alt="Certificate 3 Logo"
+                class="certificate-logo"
+              />
+              <h3>Data Structures</h3>
+              <p>
+                Issued by Example University. In-depth study of algorithms and
+                data structures.
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1-EUWiJVvuHaxvwrzIdoDPv05Zl2mxQAm/view?usp=drive_link"
+                target="_blank"
+                class="btn"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section hidden">
+        <div class="container">
+          <h2>Contact Me</h2>
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/your_form_id"
+            method="POST"
+            class="contact-form"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              autocomplete="name"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              autocomplete="email"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              required
+            ></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-social-links">
+          <a
+            href="https://www.linkedin.com/in/jasim-ansari-5b8643267/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/Jasim378"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a href="https://x.com/Jasim_0007" target="_blank" aria-label="X"
+            ><i class="fab fa-twitter"></i
+          ></a>
+        </div>
+        <p>&copy; 2025 Jasim Ansari. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
