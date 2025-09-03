@@ -25,9 +25,9 @@
     />
     <meta
       property="og:image"
-      content="https://example.com/your-social-preview-image.jpg"
+      content="https://your-domain.com/social-preview-image.jpg"
     />
-    <meta property="og:url" content="https://your-portfolio-url.com" />
+    <meta property="og:url" content="https://your-domain.com" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -61,6 +61,9 @@
     </header>
 
     <nav class="navbar">
+      <button class="nav-toggle" aria-label="toggle navigation">
+        <span class="hamburger"></span>
+      </button>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -138,13 +141,16 @@
           <h3>SalesQueen Software Solution [Frontend-Developer]</h3>
           <ul>
             <li>
-              Designed and maintained front-end components using React.js and
-              core web technologies for seamless user interaction.
+              Designed and maintained front-end components for seamless user
+              interaction.
             </li>
-            <li>React.js, HTML, CSS, JavaScript, Git, and VS Code.</li>
             <li>
               Improved website responsiveness and reduced load time by 30% using
-              React.js optimization
+              React.js optimization techniques.
+            </li>
+            <li>
+              <strong>Technologies Used:</strong> React.js, HTML, CSS,
+              JavaScript, Git, and VS Code.
             </li>
           </ul>
         </div>
@@ -241,7 +247,7 @@
             <div class="certificate-card tilt-card">
               <img
                 src="image1.png"
-                alt="Certificate 1 Logo"
+                alt="Example University Logo"
                 class="certificate-logo"
               />
               <h3>Web Development Basics</h3>
@@ -259,7 +265,7 @@
             <div class="certificate-card tilt-card">
               <img
                 src="image2.png"
-                alt="Certificate 2 Logo"
+                alt="Code Academy Logo"
                 class="certificate-logo"
               />
               <h3>Java Programming</h3>
@@ -277,7 +283,7 @@
             <div class="certificate-card tilt-card">
               <img
                 src="image3.png"
-                alt="Certificate 3 Logo"
+                alt="Example University Logo"
                 class="certificate-logo"
               />
               <h3>Data Structures</h3>
@@ -301,10 +307,16 @@
           <h2>Contact Me</h2>
           <form
             id="contactForm"
-            action="https://formspree.io/f/your_form_id"
+            action="https://api.web3forms.com/submit"
             method="POST"
             class="contact-form"
           >
+            <input
+              type="hidden"
+              name="access_key"
+              value="25bf2235-366e-4cfc-ba46-aea39f61b9d1"
+            />
+
             <input
               type="text"
               name="name"

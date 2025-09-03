@@ -262,6 +262,65 @@ body.dark-mode .navbar {
   display: none;
 }
 
+
+/* --- Hamburger Menu Styles --- */
+.nav-toggle {
+  display: none;
+  /* Hidden on desktop */
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 10px;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+  width: 2em;
+  height: 3px;
+  background: var(--text-color);
+  transition: transform 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--text-color);
+  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* Styles for when the menu is open */
+body.nav-open .hamburger {
+  background: transparent;
+}
+
+body.nav-open .hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+body.nav-open .hamburger::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+
 /* Sections */
 .section {
   padding: 80px 0;
@@ -535,10 +594,36 @@ body.dark-mode .navbar {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    /* Show hamburger on mobile */
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
   .navbar ul {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60%;
+    max-width: 300px;
+    background: var(--section-bg-color);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    gap: 25px;
+    transform: translateX(100%);
+    /* Hide it off-screen */
+    transition: transform 0.3s ease-out;
+  }
+
+  /* When nav is open, bring it on-screen */
+  body.nav-open .navbar ul {
+    transform: translateX(0);
   }
 
   .name {
@@ -551,6 +636,18 @@ body.dark-mode .navbar {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* --- Disable Parallax on Mobile for Performance --- */
+  #about,
+  #projects,
+  #internship,
+  #resume,
+  #social-media,
+  #coding-platforms,
+  #certificates,
+  #contact {
+    background-attachment: scroll;
   }
 }
 
@@ -615,14 +712,14 @@ body.dark-mode .navbar {
 
 #about::before {
   background: linear-gradient(60deg,
-      rgba(0, 128, 128, 0.85),
-      rgba(255, 193, 7, 0.75));
+      rgba(0, 128, 128, 0.9),
+      rgba(255, 193, 7, 0.8));
 }
 
 body.dark-mode #about::before {
   background: linear-gradient(60deg,
-      rgba(32, 201, 151, 0.85),
-      rgba(255, 193, 7, 0.75));
+      rgba(32, 201, 151, 0.9),
+      rgba(255, 193, 7, 0.8));
 }
 
 #projects {
@@ -634,8 +731,8 @@ body.dark-mode #about::before {
 
 #projects::before {
   background: linear-gradient(to right,
-      rgba(18, 24, 27, 0.85),
-      rgba(44, 62, 80, 0.85));
+      rgba(18, 24, 27, 0.9),
+      rgba(44, 62, 80, 0.9));
 }
 
 #internship {
@@ -647,13 +744,13 @@ body.dark-mode #about::before {
 
 #internship::before {
   background: linear-gradient(-45deg,
-      rgba(40, 43, 48, 0.85),
+      rgba(40, 43, 48, 0.9),
       rgba(10, 10, 10, 0.95));
 }
 
 body.dark-mode #internship::before {
   background: linear-gradient(-45deg,
-      rgba(18, 24, 27, 0.85),
+      rgba(18, 24, 27, 0.9),
       rgba(44, 62, 80, 0.95));
 }
 
@@ -666,13 +763,13 @@ body.dark-mode #internship::before {
 
 #resume::before {
   background: linear-gradient(45deg,
-      rgba(0, 87, 87, 0.8),
+      rgba(0, 87, 87, 0.85),
       rgba(0, 128, 128, 0.9));
 }
 
 body.dark-mode #resume::before {
   background: linear-gradient(45deg,
-      rgba(32, 201, 151, 0.8),
+      rgba(32, 201, 151, 0.85),
       rgba(26, 34, 38, 0.9));
 }
 
@@ -685,13 +782,13 @@ body.dark-mode #resume::before {
 
 #social-media::before {
   background: linear-gradient(-45deg,
-      rgba(255, 193, 7, 0.8),
-      rgba(0, 128, 128, 0.85));
+      rgba(255, 193, 7, 0.85),
+      rgba(0, 128, 128, 0.9));
 }
 
 body.dark-mode #social-media::before {
   background: linear-gradient(-45deg,
-      rgba(255, 193, 7, 0.8),
+      rgba(255, 193, 7, 0.85),
       rgba(26, 34, 38, 0.9));
 }
 
@@ -704,13 +801,13 @@ body.dark-mode #social-media::before {
 
 #coding-platforms::before {
   background: linear-gradient(-45deg,
-      rgba(40, 43, 48, 0.85),
+      rgba(40, 43, 48, 0.9),
       rgba(10, 10, 10, 0.95));
 }
 
 body.dark-mode #coding-platforms::before {
   background: linear-gradient(-45deg,
-      rgba(18, 24, 27, 0.85),
+      rgba(18, 24, 27, 0.9),
       rgba(44, 62, 80, 0.95));
 }
 
@@ -723,13 +820,13 @@ body.dark-mode #coding-platforms::before {
 
 #certificates::before {
   background: linear-gradient(135deg,
-      rgba(0, 87, 87, 0.88),
-      rgba(18, 24, 27, 0.92));
+      rgba(0, 87, 87, 0.9),
+      rgba(18, 24, 27, 0.95));
 }
 
 body.dark-mode #certificates::before {
   background: linear-gradient(135deg,
-      rgba(26, 34, 38, 0.88),
+      rgba(26, 34, 38, 0.9),
       rgba(18, 24, 27, 0.95));
 }
 
@@ -749,12 +846,12 @@ body.dark-mode #certificates::before {
 
 #contact::before {
   background: linear-gradient(to right,
-      rgba(2, 8, 24, 0.85),
-      rgba(0, 87, 87, 0.9));
+      rgba(2, 8, 24, 0.9),
+      rgba(0, 87, 87, 0.95));
 }
 
 body.dark-mode #contact::before {
   background: linear-gradient(to right,
-      rgba(18, 24, 27, 0.85),
+      rgba(18, 24, 27, 0.9),
       rgba(44, 62, 80, 0.95));
 }

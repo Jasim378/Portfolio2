@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // --- Hamburger Menu Logic ---
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelectorAll('.navbar ul li a');
+
+  navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+    });
+  });
+
   // --- Dark Mode Logic ---
   const darkModeToggle = document.getElementById('darkModeToggle');
   const body = document.body;
@@ -86,13 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Navbar Link Highlighting on Scroll ---
   const sections = document.querySelectorAll('main section[id]');
-  const navLinks = document.querySelectorAll('.navbar ul li a');
+  const mainNavLinks = document.querySelectorAll('.navbar ul li a');
   const navObserverOptions = { rootMargin: '-40% 0px -60% 0px' };
   const navObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
+        mainNavLinks.forEach((link) => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
@@ -107,20 +121,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 3D Tilt Effect for Cards ---
   const tiltCards = document.querySelectorAll('.tilt-card');
-  tiltCards.forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = card.offsetWidth / 2;
-      const centerY = card.offsetHeight / 2;
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+  const isTouchDevice = 'ontouchstart' in window;
+
+  if (!isTouchDevice) { // Only run this code if it's NOT a touch device
+    tiltCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = card.offsetWidth / 2;
+        const centerY = card.offsetHeight / 2;
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform =
+          'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      });
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform =
-        'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-    });
-  });
+  }
 });
