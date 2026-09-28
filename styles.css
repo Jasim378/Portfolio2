@@ -20,3 +20,40 @@ body.dark-mode{--bg:#08111f;--surface:#0f1b2d;--surface-2:#111f33;--text:#edf4ff
 .project-link:hover { transform:translateY(-2px); border-color:var(--primary); box-shadow:0 8px 22px rgba(0,0,0,.08); }
 .project-link:focus-visible { outline:3px solid var(--primary); outline-offset:3px; }
 @media (max-width:480px){ .project-actions,.project-link{width:100%}.project-link{justify-content:center} }
+
+
+/* Final responsive and accessibility polish */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img,svg,video,canvas{max-width:100%;height:auto}
+button,a,input,textarea,select{-webkit-tap-highlight-color:transparent}
+.nav-links a,.btn,button,.project-link,.social-link{min-height:44px}
+.project-card,.skill-card,.experience-card,.certificate-card{min-width:0}
+.project-card h3,.project-card p,.experience-card p,.about-text,.contact-info{overflow-wrap:anywhere}
+section{scroll-margin-top:86px}
+input,textarea,select{font-size:16px}
+
+/* Skoolora featured project: compact professional split layout */
+.skoolora-card{grid-template-columns:minmax(260px,.9fr) minmax(0,1.1fr);align-items:center}
+.skoolora-preview{display:flex;align-items:center;justify-content:center;min-height:100%;padding:22px;background:linear-gradient(145deg,var(--surface-2),var(--bg));border-right:1px solid var(--border)}
+.skoolora-project-image{width:100%;max-width:440px;height:auto;max-height:285px;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 14px 34px rgba(15,23,42,.14)}
+
+@media(max-width:1024px){.container{width:min(92%,920px)}}
+@media(max-width:900px){
+  .nav-links{max-height:calc(100dvh - 74px);overflow-y:auto;overscroll-behavior:contain}
+  .hero{min-height:calc(100svh - 74px);min-height:calc(100dvh - 74px)}
+}
+@media(max-width:780px){
+  .skoolora-card{grid-template-columns:1fr}
+  .skoolora-preview{min-height:auto;padding:18px;border-right:0;border-bottom:1px solid var(--border)}
+  .skoolora-project-image{max-width:560px;max-height:260px}
+}
+@media(max-width:480px){
+  .container,.nav-inner{width:min(calc(100% - 24px),var(--max))}
+  .project-actions{width:100%}
+  .project-actions .project-link{width:100%;justify-content:center;text-align:center}
+  .skoolora-preview{padding:12px}
+  .skoolora-project-image{max-height:210px;border-radius:10px}
+}
+@media(max-width:359px){.hero h1{font-size:2.15rem}.section-title{font-size:1.9rem}}
+@media(max-height:560px) and (orientation:landscape){.hero{min-height:auto;padding-top:64px;padding-bottom:44px}}
+@media(hover:none) and (pointer:coarse){.project-card:hover,.skill-card:hover,.experience-card:hover,.certificate-card:hover{transform:none}.project-card:hover .project-image img{transform:none}}
