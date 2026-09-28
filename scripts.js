@@ -1,145 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Hamburger Menu Logic ---
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelectorAll('.navbar ul li a');
-
-  navToggle.addEventListener('click', () => {
-    document.body.classList.toggle('nav-open');
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      document.body.classList.remove('nav-open');
-    });
-  });
-
-  // --- Dark Mode Logic ---
-  const darkModeToggle = document.getElementById('darkModeToggle');
   const body = document.body;
-  const moonIcon = darkModeToggle.querySelector('i');
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    enableDarkMode();
-  }
-  darkModeToggle.addEventListener('click', () => {
-    if (body.classList.contains('dark-mode')) {
-      disableDarkMode();
-    } else {
-      enableDarkMode();
-    }
-  });
-  function enableDarkMode() {
-    body.classList.add('dark-mode');
-    moonIcon.classList.remove('fa-moon');
-    moonIcon.classList.add('fa-sun');
-    localStorage.setItem('darkMode', 'enabled');
-  }
-  function disableDarkMode() {
-    body.classList.remove('dark-mode');
-    moonIcon.classList.remove('fa-sun');
-    moonIcon.classList.add('fa-moon');
-    localStorage.setItem('darkMode', 'disabled');
-  }
-
-  // --- Back to Top Button ---
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const themeToggle = document.getElementById('darkModeToggle');
+  const themeIcon = themeToggle.querySelector('i');
   const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
-    }
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const setNavState = (open) => {
+    body.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  };
+
+  navToggle.addEventListener('click', () => setNavState(!body.classList.contains('nav-open')));
+  navLinks.forEach((link) => link.addEventListener('click', () => setNavState(false)));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setNavState(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) setNavState(false); }, { passive: true });
+
+  const applyTheme = (theme) => {
+    const dark = theme === 'dark';
+    body.classList.toggle('dark-mode', dark);
+    themeIcon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+    themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  };
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme(savedTheme || preferredTheme);
+  themeToggle.addEventListener('click', () => {
+    const next = body.classList.contains('dark-mode') ? 'light' : 'dark';
+    localStorage.setItem('portfolio-theme', next);
+    applyTheme(next);
   });
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
-  // --- Typing Effect Logic ---
-  const typingText = document.getElementById('typing-text');
-  const phrases = [
-    'Aspiring Software Developer',
-    'Learning. Growing. Building..',
-    'Creative Problem Solver',
-  ];
-  let phraseIndex = 0,
-    charIndex = 0,
-    isDeleting = false;
-  function type() {
-    const currentPhrase = phrases[phraseIndex];
-    if (isDeleting) {
-      typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-      charIndex++;
-    }
-    let typeSpeed = isDeleting ? 100 : 150;
-    if (!isDeleting && charIndex === currentPhrase.length) {
-      typeSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-    }
-    setTimeout(type, typeSpeed);
-  }
-  type();
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  // --- Scroll Animation for Sections ---
-  const hiddenElements = document.querySelectorAll('.hidden');
-  const scrollObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  hiddenElements.forEach((el) => scrollObserver.observe(el));
-
-  // --- Navbar Link Highlighting on Scroll ---
   const sections = document.querySelectorAll('main section[id]');
-  const mainNavLinks = document.querySelectorAll('.navbar ul li a');
-  const navObserverOptions = { rootMargin: '-40% 0px -60% 0px' };
-  const navObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        mainNavLinks.forEach((link) => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${id}`) {
-            link.classList.add('active');
-          }
-        });
-      }
-    });
-  }, navObserverOptions);
-  sections.forEach((section) => {
-    navObserver.observe(section);
-  });
-
-  // --- 3D Tilt Effect for Cards ---
-  const tiltCards = document.querySelectorAll('.tilt-card');
-  const isTouchDevice = 'ontouchstart' in window;
-
-  if (!isTouchDevice) {
-    // Only run this code if it's NOT a touch device
-    tiltCards.forEach((card) => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = card.offsetWidth / 2;
-        const centerY = card.offsetHeight / 2;
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) * 8;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+  if ('IntersectionObserver' in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
       });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform =
-          'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-      });
-    });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach((section) => sectionObserver.observe(section));
   }
+
+  const revealItems = document.querySelectorAll('.reveal');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    revealItems.forEach((item) => item.classList.add('visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  const handleScroll = () => backToTop.classList.toggle('visible', window.scrollY > 500);
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
 });
