@@ -177,6 +177,24 @@ input, textarea, select {
   }
 }
 </style>
+
+<style>
+.skoolora-project-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+}
+@media (max-width: 480px) {
+  .skoolora-project-image {
+    border-radius: 10px;
+  }
+}
+</style>
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -258,7 +276,8 @@ input, textarea, select {
         <div class="projects-grid projects-grid-featured">
           <article class="project-card project-card-featured">
             <div class="project-visual project-visual-code"><i class="fas fa-school"></i><span>Full-stack SaaS</span></div>
-            <div class="project-body"><div class="project-number">01</div><div class="project-badge">Featured Project</div><h3>Skoolora</h3><p class="project-subtitle">School Attendance & Management SaaS</p><p>A multi-role school management application designed around practical attendance workflows, academic years, student enrollment, reporting and account management.</p><ul class="project-points"><li>Role-based experiences for Super Admin, Admin and Teacher.</li><li>Attendance workflows, correction requests, reports and export-oriented flows.</li><li>Email OTP authentication, multi-tenant structure and responsive UI.</li></ul><div class="chips"><span>Spring Boot</span><span>React</span><span>MySQL</span><span>REST APIs</span><span>Git</span></div><div class="project-actions"><a class="project-link" href="https://app.skoolora.co.in" target="_blank" rel="noopener noreferrer">Live Demo <i class="fas fa-arrow-up-right-from-square"></i></a></div></div>
+            <div class="project-body"><div class="project-number">01</div><div class="project-badge">
+<img src="skoolora-project.png" alt="Skoolora School Attendance Management System dashboard preview" class="skoolora-project-image" loading="lazy" decoding="async">Featured Project</div><h3>Skoolora</h3><p class="project-subtitle">Founder &amp; Developer · School Attendance &amp; Management SaaS</p><p>A multi-role school management application designed around practical attendance workflows, academic years, student enrollment, reporting and account management.</p><ul class="project-points"><li>Role-based experiences for Super Admin, Admin and Teacher.</li><li>Attendance workflows, correction requests, reports and export-oriented flows.</li><li>Email OTP authentication, multi-tenant structure and responsive UI.</li></ul><div class="chips"><span>Spring Boot</span><span>React</span><span>MySQL</span><span>REST APIs</span><span>Git</span></div><div class="project-actions"><a class="project-link" href="https://app.skoolora.co.in" target="_blank" rel="noopener noreferrer">Live Demo <i class="fas fa-arrow-up-right-from-square"></i></a></div></div>
           </article>
           <article class="project-card">
             <div class="project-visual"><i class="fas fa-database"></i><span>Java Backend</span></div>
@@ -285,12 +304,12 @@ input, textarea, select {
         <div><p class="section-kicker">Experience</p><h2 class="section-title">Practical experience building for the web.</h2></div>
         <div class="experience-list">
           <article class="experience-card">
-            <div class="experience-top"><div><p class="experience-label">Current Professional Work</p><h3>Salesforce Development</h3><p class="company">CTI & Voice workflow features</p></div><i class="fas fa-cloud"></i></div>
+            <div class="experience-top"><div><p class="experience-label">Current Professional Work</p><h3>Junior Salesforce Developer</h3><p class="company">360 Degree</p></div><i class="fas fa-cloud"></i></div>
             <ul><li>Work with Lightning Web Components (LWC), Apex and Salesforce configuration on production-oriented feature tasks.</li><li>Implement and debug CTI workflows including call routing, Voice Agent navigation and Experience Cloud components.</li><li>Investigate existing code flows, make scoped changes and validate behavior while preserving surrounding functionality.</li></ul>
             <div class="chips experience-chips"><span>Salesforce</span><span>LWC</span><span>Apex</span><span>JavaScript</span><span>Git</span></div>
           </article>
           <article class="experience-card">
-            <div class="experience-top"><div><p class="experience-label">Internship</p><h3>Frontend Developer</h3><p class="company">SalesQueen Software Solution</p></div><i class="fas fa-briefcase"></i></div>
+            <div class="experience-top"><div><p class="experience-label">Internship</p><h3>Frontend Developer Intern</h3><p class="company">SalesQueen Software Solution</p></div><i class="fas fa-briefcase"></i></div>
             <ul><li>Designed and maintained front-end components for seamless user interaction.</li><li>Worked on responsive interfaces and front-end performance improvements.</li><li>Used React.js, HTML, CSS, JavaScript, Git and VS Code.</li></ul>
           </article>
         </div>
